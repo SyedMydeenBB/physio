@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unique PHYSIO CARE - For a Better Quality of Life</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            line-height: 1.2;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #3498db;
+        }
+
+        .logo p {
+            font-size: 14px;
+            color: #ecf0f1;
+            margin-top: 5px;
+        }
+
+        .navbar ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            padding: 5px 0;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover,
+        .navbar a.active {
+            color: #3498db;
+        }
+
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #3498db;
+            left: 0;
+            bottom: -5px;
+            transition: width 0.3s;
+        }
+
+        .navbar a:hover::after,
+        .navbar a.active::after {
+            width: 100%;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .call-btn {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .call-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .book-btn {
+            background-color: #e74c3c;
+            color: white;
+            padding: 10px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .book-btn:hover {
+            background-color: #c0392b;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero h2 {
+            font-size: 24px;
+            color: #3498db;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 15px 40px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+            font-size: 16px;
+        }
+
+        .btn-primary {
+            background-color: #3498db;
+            color: white;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background-color: white;
+            color: #2c3e50;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Stats Section */
+        .stats {
+            background-color: #f8f9fa;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .stats .container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .stat-item {
+            flex: 1;
+            min-width: 200px;
+            padding: 20px;
+        }
+
+        .stat-item h3 {
+            font-size: 48px;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .stat-item p {
+            color: #7f8c8d;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        /* Services Preview */
+        .services-preview {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .learn-more {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.3s;
+        }
+
+        .learn-more:hover {
+            color: #2980b9;
+        }
+
+        /* Why Choose Us */
+        .why-choose-us {
+            background-color: #f8f9fa;
+            padding: 80px 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature i {
+            font-size: 48px;
+            color: #3498db;
+            margin-bottom: 20px;
+        }
+
+        .feature h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .feature p {
+            color: #666;
+            font-size: 16px;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .contact-section .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info h2 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .contact-item i {
+            font-size: 24px;
+            color: #3498db;
+            margin-top: 5px;
+        }
+
+        .contact-item h3 {
+            color: #2c3e50;
+            margin-bottom: 5px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .contact-item p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .map-container h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .map-placeholder {
+            background-color: #ecf0f1;
+            height: 400px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #7f8c8d;
+            font-size: 18px;
+            border: 2px dashed #bdc3c7;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3,
+        .footer-section h4 {
+            color: #3498db;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .footer-section h3 {
+            font-size: 22px;
+        }
+
+        .footer-section h4 {
+            font-size: 18px;
+        }
+
+        .footer-section p {
+            color: #ecf0f1;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+            color: #ecf0f1;
+        }
+
+        .footer-section a {
+            color: #ecf0f1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #3498db;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #34495e;
+            color: #95a5a6;
+            font-size: 14px;
+        }
+
+        /* Modal Styles - <CHANGE> Fixed scrolling issue */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #7f8c8d;
+            transition: color 0.3s;
+            z-index: 10;
+        }
+
+        .close-modal:hover {
+            color: #e74c3c;
+        }
+
+        .modal h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .modal form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .modal form input,
+        .modal form select,
+        .modal form textarea {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .modal form textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .modal form button {
+            background-color: #3498db;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .modal form button:hover {
+            background-color: #2980b9;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .contact-section .container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header .container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .navbar ul {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .header-actions {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero {
+                padding: 60px 0;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero h2 {
+                font-size: 20px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+
+            .stats .container {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 20% auto;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .call-btn, .book-btn {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+            }
+
+            .modal-content {
+                margin: 30% auto;
+                max-height: 80vh;
+            }
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                right: 20px;
+                top: 20px;
+            }
+
+            .navbar {
+                display: none;
+                width: 100%;
+                order: 3;
+                margin-top: 20px;
+            }
+
+            .navbar.show {
+                display: block;
+            }
+
+            .navbar ul {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header class="header">
+        <div class="container">
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="logo">
+                <h1>Unique<br><span>PHYSIO CARE</span></h1>
+                <p>For a Better Quality of Life</p>
+            </div>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#">Guide</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="tel:+918428995309" class="call-btn">
+                    <i class="fas fa-phone"></i> Call: +91-84289-95309
+                </a>
+                <a href="#" class="book-btn">Book Now</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>Best Physiotherapy Clinic in Madurai</h2>
+                    <h1>Physiotherapy Specialists for Back Pain Relief</h1>
+                    <p>We specialize in back pain, shoulder pain, knee pain and neck pain. Our comprehensive physiotherapy services address a wide range of conditions. Our commitment is your health, and our goal is to improve your mobility and quality of life.</p>
+                    <div class="hero-buttons">
+                        <a href="tel:+918428995309" class="btn-primary">
+                            <i class="fas fa-phone"></i> Call Now
+                        </a>
+                        <a href="#" class="btn-secondary">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats">
+            <div class="container">
+                <div class="stat-item">
+                    <h3>5+</h3>
+                    <p>Years of Experience</p>
+                </div>
+                <div class="stat-item">
+                    <h3>2K+</h3>
+                    <p>Satisfied Patients</p>
+                </div>
+                <div class="stat-item">
+                    <h3>99.9%</h3>
+                    <p>Faster Recovery</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Preview -->
+        <section class="services-preview">
+            <div class="container">
+                <h2 class="section-title">Our Services</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h3>Back Pain Physiotherapy</h3>
+                        <p>Specialized treatment for chronic and acute back pain, including sciatica, herniated discs, and lumbar strain.</p>
+                        <a href="#back-pain" class="learn-more">Learn more →</a>
+                    </div>
+                    <div class="service-card">
+                        <h3>Neck Pain Physiotherapy</h3>
+                        <p>Effective treatment for cervical pain, stiffness, and related conditions like cervical spondylosis.</p>
+                        <a href="#neck-pain" class="learn-more">Learn more →</a>
+                    </div>
+                    <div class="service-card">
+                        <h3>Shoulder Pain Physiotherapy</h3>
+                        <p>Comprehensive care for frozen shoulder, rotator cuff injuries, and other shoulder conditions.</p>
+                        <a href="#shoulder-pain" class="learn-more">Learn more →</a>
+                    </div>
+                    <div class="service-card">
+                        <h3>Knee Pain Physiotherapy</h3>
+                        <p>Expert treatment for knee pain, ACL injuries, arthritis, and post-surgery rehabilitation.</p>
+                        <a href="#knee-pain" class="learn-more">Learn more →</a>
+                    </div>
+                    <div class="service-card">
+                        <h3>Sports Injury Physiotherapy</h3>
+                        <p>Specialized rehabilitation programs for athletes to regain strength and return to play safely.</p>
+                        <a href="#sports-injury" class="learn-more">Learn more →</a>
+                    </div>
+                    <div class="service-card">
+                        <h3>Home Visit Physiotherapy</h3>
+                        <p>Convenient at-home therapy sessions for patients with mobility issues or busy schedules.</p>
+                        <a href="#home-visit" class="learn-more">Learn more →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us -->
+        <section class="why-choose-us">
+            <div class="container">
+                <h2 class="section-title">Why Choose Us</h2>
+                <div class="features-grid">
+                    <div class="feature">
+                        <i class="fas fa-user-md"></i>
+                        <h3>Expert Therapists</h3>
+                        <p>Our highly qualified physiotherapists have years of experience in treating various conditions.</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-heartbeat"></i>
+                        <h3>Personalized Care</h3>
+                        <p>Each treatment plan is customized according to the patient's specific needs and condition.</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-award"></i>
+                        <h3>Proven Results</h3>
+                        <p>Our treatment methods have helped thousands of patients achieve pain relief and recovery.</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-clock"></i>
+                        <h3>Convenient Hours</h3>
+                        <p>We offer flexible appointment slots to fit your busy schedule.</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-hospital"></i>
+                        <h3>Modern Equipment</h3>
+                        <p>We use state-of-the-art equipment and latest physiotherapy techniques.</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-smile"></i>
+                        <h3>Patient Support</h3>
+                        <p>We provide ongoing support and guidance for long-term recovery and wellness.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section">
+            <div class="container">
+                <div class="contact-info">
+                    <h2>Get In Touch</h2>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h3>Address</h3>
+                                <p>123 Health Street, Medical Complex<br>Madurai, Tamil Nadu 625001<br>India</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <div>
+                                <h3>Phone</h3>
+                                <p>+91-84289-95309<br>+91-7305-27-4514</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h3>Email</h3>
+                                <p>info@uniquephysiocare.com<br>appointments@uniquephysiocare.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h3>Working Hours</h3>
+                                <p>Monday - Friday: 9:00 AM - 7:00 PM<br>Saturday: 10:00 AM - 5:00 PM<br>Sunday: Closed</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <h3>Location</h3>
+                    <div class="map-placeholder">
+                        <p>Google Map will be embedded here</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>Unique Physio Care is a leading physiotherapy clinic dedicated to providing quality care and comprehensive rehabilitation services.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Back Pain Treatment</a></li>
+                        <li><a href="#">Neck Pain Relief</a></li>
+                        <li><a href="#">Shoulder Care</a></li>
+                        <li><a href="#">Knee Treatment</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Unique Physio Care. All rights reserved. | Privacy Policy | Terms & Conditions</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Navigation Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navbar = document.querySelector('.navbar');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navbar.classList.toggle('show');
+                    const icon = this.querySelector('i');
+                    if (icon.classList.contains('fa-bars')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            }
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                        
+                        if (navbar.classList.contains('show')) {
+                            navbar.classList.remove('show');
+                            mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+                            mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+                        }
+                    }
+                });
+            });
+            
+            // Appointment booking functionality
+            const bookBtns = document.querySelectorAll('.book-btn, .btn-secondary');
+            
+            bookBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showBookingModal();
+                });
+            });
+            
+            function showBookingModal() {
+                const modalHTML = `
+                    <div class="modal" id="bookingModal">
+                        <div class="modal-content">
+                            <span class="close-modal">&times;</span>
+                            <h2>Book an Appointment</h2>
+                            <form id="bookingForm">
+                                <input type="text" placeholder="Your Name" required>
+                                <input type="tel" placeholder="Phone Number" required>
+                                <input type="email" placeholder="Email Address">
+                                <select required>
+                                    <option value="">Select Service</option>
+                                    <option value="back-pain">Back Pain Physiotherapy</option>
+                                    <option value="neck-pain">Neck Pain Physiotherapy</option>
+                                    <option value="shoulder-pain">Shoulder Pain Physiotherapy</option>
+                                    <option value="knee-pain">Knee Pain Physiotherapy</option>
+                                    <option value="home-visit">Home Visit Physiotherapy</option>
+                                </select>
+                                <input type="date" required>
+                                <input type="time" required>
+                                <textarea placeholder="Additional Notes"></textarea>
+                                <button type="submit">Book Now</button>
+                            </form>
+                        </div>
+                    </div>
+                `;
+                
+                document.body.insertAdjacentHTML('beforeend', modalHTML);
+                
+                const modal = document.getElementById('bookingModal');
+                const closeBtn = modal.querySelector('.close-modal');
+                
+                modal.style.display = 'block';
+                
+                const dateInput = modal.querySelector('input[type="date"]');
+                const today = new Date().toISOString().split('T')[0];
+                dateInput.min = today;
+                
+                closeBtn.onclick = function() {
+                    modal.style.display = 'none';
+                    setTimeout(() => modal.remove(), 300);
+                };
+                
+                window.onclick = function(event) {
+                    if (event.target === modal) {
+                        modal.style.display = 'none';
+                        setTimeout(() => modal.remove(), 300);
+                    }
+                };
+                
+                document.getElementById('bookingForm').addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const formData = {
+                        name: this.querySelector('input[type="text"]').value,
+                        phone: this.querySelector('input[type="tel"]').value,
+                        email: this.querySelector('input[type="email"]').value,
+                        service: this.querySelector('select').value,
+                        date: this.querySelector('input[type="date"]').value,
+                        time: this.querySelector('input[type="time"]').value,
+                        notes: this.querySelector('textarea').value
+                    };
+                    
+                    console.log('Booking submitted:', formData);
+                    
+                    alert('Thank you! Your appointment request has been submitted. We will contact you shortly to confirm.');
+                    
+                    modal.style.display = 'none';
+                    setTimeout(() => modal.remove(), 300);
+                });
+            }
+            
+            const currentPage = window.location.pathname;
+            const navLinks = document.querySelectorAll('.navbar a');
+            
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage || 
+                   (currentPage === '/' && link.getAttribute('href') === '#')) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+                
+                link.addEventListener('click', function() {
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            const copyrightElement = document.querySelector('.footer-bottom p');
+            if (copyrightElement) {
+                const currentYear = new Date().getFullYear();
+                copyrightElement.innerHTML = copyrightElement.innerHTML.replace('2024', currentYear);
+            }
+        });
+
+        // Sticky header on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.padding = '10px 0';
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.padding = '15px 0';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            }
+        });
+    </script>
+</body>
+</html>

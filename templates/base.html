@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ title }}{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>CHENNAI<br><span>PHYSIO CARE</span></h1>
+                <p>For a Better Quality of Life</p>
+            </div>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="{% url 'home' %}" class="{% if request.path == '/' %}active{% endif %}">Home</a></li>
+                    <li><a href="{% url 'guide' %}" class="{% if '/guide/' in request.path %}active{% endif %}">Guide</a></li>
+                    <li><a href="{% url 'services' %}" class="{% if '/services/' in request.path %}active{% endif %}">Services</a></li>
+                    <li><a href="{% url 'blog' %}" class="{% if '/blog/' in request.path %}active{% endif %}">Blog</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="tel:+917305274514" class="call-btn">
+                    <i class="fas fa-phone"></i> Call: +91-73052-74514
+                </a>
+                <a href="#" class="book-btn">Book Now</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CHENNAI PHYSIO CARE</h3>
+                    <p>For a Better Quality of Life - Providing expert physiotherapy services in Chennai.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li><a href="{% url 'services' %}">Services</a></li>
+                        <li><a href="{% url 'about' %}">About Us</a></li>
+                        <li><a href="{% url 'contact' %}">Contact</a></li>
+                        <li><a href="{% url 'blog' %}">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Popular Services</h4>
+                    <ul>
+                        <li>Back Pain Physiotherapy</li>
+                        <li>Neck Pain Physiotherapy</li>
+                        <li>Shoulder Pain Physiotherapy</li>
+                        <li>Knee Pain Physiotherapy</li>
+                        <li>Home Visit Physiotherapy</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> {{ address }}</p>
+                    <p><i class="fas fa-phone"></i> {{ phone }}</p>
+                    <p><i class="fas fa-envelope"></i> {{ email }}</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Chennai Physio Care. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

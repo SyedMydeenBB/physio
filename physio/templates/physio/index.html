@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h2>Best Physiotherapy Clinic in Anna Nagar</h2>
+            <h1>Physiotherapy Specialists for Back Pain Relief</h1>
+            <p>We specialize in back pain, shoulder pain, knee pain and neck pain. Our comprehensive physiotherapy services address a wide range of conditions. Our commitment is your health, and our goal is to improve your mobility and quality of life.</p>
+            <div class="hero-buttons">
+                <a href="tel:+917305274514" class="btn-primary">
+                    <i class="fas fa-phone"></i> Call Now
+                </a>
+                <a href="#" class="btn-secondary">Book Appointment</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="stats">
+    <div class="container">
+        <div class="stat-item">
+            <h3>{{ years_experience }}</h3>
+            <p>Years of Experience</p>
+        </div>
+        <div class="stat-item">
+            <h3>{{ patients_served }}</h3>
+            <p>Satisfied Patients</p>
+        </div>
+        <div class="stat-item">
+            <h3>{{ recovery_rate }}</h3>
+            <p>Faster Recovery</p>
+        </div>
+    </div>
+</section>
+
+<!-- Services Preview -->
+<section class="services-preview">
+    <div class="container">
+        <h2 class="section-title">Our Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Back Pain Physiotherapy</h3>
+                <p>Specialized treatment for chronic and acute back pain, including sciatica, herniated discs, and lumbar strain.</p>
+                <a href="{% url 'services' %}#back-pain" class="learn-more">Learn more →</a>
+            </div>
+            <div class="service-card">
+                <h3>Neck Pain Physiotherapy</h3>
+                <p>Effective treatment for cervical pain, stiffness, and related conditions like cervical spondylosis.</p>
+                <a href="{% url 'services' %}#neck-pain" class="learn-more">Learn more →</a>
+            </div>
+            <div class="service-card">
+                <h3>Shoulder Pain Physiotherapy</h3>
+                <p>Comprehensive care for frozen shoulder, rotator cuff injuries, and other shoulder conditions.</p>
+                <a href="{% url 'services' %}#shoulder-pain" class="learn-more">Learn more →</a>
+            </div>
+            <div class="service-card">
+                <h3>Knee Pain Physiotherapy</h3>
+                <p>Specialized rehabilitation for knee injuries, arthritis, and post-surgical recovery.</p>
+                <a href="{% url 'services' %}#knee-pain" class="learn-more">Learn more →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Why Choose Us -->
+<section class="why-choose-us">
+    <div class="container">
+        <h2 class="section-title">The Chennai Physio Care Difference</h2>
+        <div class="features-grid">
+            <div class="feature">
+                <i class="fas fa-user-md"></i>
+                <h3>Personalized Treatment Plans</h3>
+                <p>Tailored to your specific needs and condition</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-graduation-cap"></i>
+                <h3>Qualified Therapists</h3>
+                <p>Highly qualified and experienced physiotherapists</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-hospital"></i>
+                <h3>Modern Facilities</h3>
+                <p>State-of-the-art facilities and equipment</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-heartbeat"></i>
+                <h3>Holistic Approach</h3>
+                <p>Addressing the root cause of your condition</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-clock"></i>
+                <h3>Flexible Hours</h3>
+                <p>Convenient appointment scheduling</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-home"></i>
+                <h3>Home Visits</h3>
+                <p>Home visit physiotherapy services available</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="contact-section">
+    <div class="container">
+        <div class="contact-info">
+            <h2>Contact Us</h2>
+            <div class="contact-details">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h3>Our Location</h3>
+                        <p>Anna Nagar West, Chennai, Tamil Nadu</p>
+                        <p>{{ address }}</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <h3>Phone</h3>
+                        <p>{{ phone }}</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h3>Email</h3>
+                        <p>{{ email }}</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <h3>Working Hours</h3>
+                        <p>Monday - Saturday: 8.30am - 7pm</p>
+                        <p>Sunday: Holiday</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="map-container">
+            <h3>Find Us on Map</h3>
+            <div class="map-placeholder">
+                <!-- You can embed Google Maps here -->
+                <p>Map of Anna Nagar, Chennai location</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
