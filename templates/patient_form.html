@@ -1,7 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Patient Form</title>
+
+{% extends 'base.html' %}
+
+{% block bodyblock %}
     <style>
         body { font-family: Arial, sans-serif; margin: 20px; }
         .form-group { margin-bottom: 15px; }
@@ -15,8 +15,7 @@
         .btn-secondary { background-color: #f44336; color: white; text-decoration: none; }
         .actions { margin-top: 20px; display: flex; gap: 10px; }
     </style>
-</head>
-<body>
+
     <h1>{% if form.instance.pk %}Edit Patient{% else %}Add Patient{% endif %}</h1>
     
     <form method="post">
@@ -66,5 +65,4 @@
             <a href="{% url 'patient_list' %}" class="btn btn-secondary">Cancel</a>
         </div>
     </form>
-</body>
-</html>
+{% endblock %}
