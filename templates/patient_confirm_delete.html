@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Patient</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .confirmation { background-color: #f8d7da; padding: 20px; border-radius: 4px; margin: 20px 0; }
+        .actions { margin-top: 20px; display: flex; gap: 10px; }
+        .btn { padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; }
+        .btn-danger { background-color: #f44336; color: white; }
+        .btn-secondary { background-color: #6c757d; color: white; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Delete Patient</h1>
+    
+    <div class="confirmation">
+        <p>Are you sure you want to delete "{{ patient.name }}" (Case: {{ patient.case_number }})?</p>
+        <p>This action cannot be undone.</p>
+    </div>
+    
+    <form method="post" class="actions">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Confirm Delete</button>
+        <a href="{% url 'patient_list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</body>
+</html>
