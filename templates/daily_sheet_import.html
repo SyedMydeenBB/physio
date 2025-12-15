@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}Import Daily Sheets{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    <h4 class="mb-0">
+                        <i class="bi bi-upload"></i> Import Daily Sheets from Excel
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-info">
+                        <h5><i class="bi bi-info-circle"></i> Excel Format Instructions</h5>
+                        <p class="mb-2">Your Excel file should have the following columns:</p>
+                        <ul class="mb-0">
+                            <li><strong>Date</strong> - Format: YYYY-MM-DD</li>
+                            <li><strong>Name</strong> - Patient name</li>
+                            <li><strong>Case Number</strong> - Unique case identifier</li>
+                            <li><strong>Diagnosis</strong> - Medical diagnosis</li>
+                            <li><strong>Charge</strong> - Amount charged (numeric)</li>
+                            <li><strong>Received</strong> - Amount received (numeric)</li>
+                            <li><strong>Payment Status</strong> - Options: Paid, Partially Paid, Not Paid</li>
+                            <li><strong>Payment Type</strong> - Options: QR, Cash</li>
+                            <li><strong>Payment Frequency</strong> - Options: Daily Basis, Weekly Basis, Monthly Basis</li>
+                            <li><strong>In Time</strong> - Format: HH:MM</li>
+                            <li><strong>Out Time</strong> - Format: HH:MM</li>
+                            <li><strong>Treatment 1, Treatment 2, Treatment 3, Treatment 4</strong> - Optional</li>
+                            <li><strong>Therapist 1</strong> - Options: Dr. Basidh, Dr. Visitra, Dr. Bharatiselvi</li>
+                            <li><strong>Therapist 2</strong> - Optional (same options as Therapist 1)</li>
+                        </ul>
+                    </div>
+                    
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        
+                        <div class="mb-4">
+                            <label class="form-label">Select Excel File</label>
+                            {{ form.excel_file }}
+                            {% if form.excel_file.errors %}
+                                <div class="text-danger mt-1">{{ form.excel_file.errors }}</div>
+                            {% endif %}
+                            <div class="form-text">Supported formats: .xlsx, .xls</div>
+                        </div>
+                        
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-info">
+                                <i class="bi bi-upload"></i> Import Data
+                            </button>
+                            <a href="{% url 'daily_sheet_list' %}" class="btn btn-secondary">
+                                <i class="bi bi-arrow-left"></i> Back to List
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

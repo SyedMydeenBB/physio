@@ -1,0 +1,414 @@
+{% extends 'base.html' %}
+
+{% block title %}Unique Physio Care | {{ action }} Daily Sheet{% endblock %}
+
+{% block content %}
+<style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: #f4f7fb;
+      min-height: 100vh;
+      width: 100%;
+    }
+
+    /* ================= MAIN CONTENT ================= */
+    .main {
+      width: 100%;
+      padding: 20px;
+      min-height: 100vh;
+    }
+
+    /* ================= HEADER ================= */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #ffffff;
+      padding: 15px 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      margin-bottom: 25px;
+    }
+
+    .header h1 {
+      font-size: 22px;
+      color: #1f3c88;
+    }
+
+    .datetime {
+      font-size: 14px;
+      color: #555;
+    }
+
+    /* ================= FORM CONTAINER ================= */
+    .form-container {
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 25px;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .form-header {
+      background: #1f3c88;
+      color: #ffffff;
+      padding: 15px 25px;
+    }
+
+    .form-header h2 {
+      font-size: 18px;
+      margin: 0;
+    }
+
+    .form-body {
+      padding: 25px;
+    }
+
+    .form-section {
+      margin-bottom: 25px;
+    }
+
+    .form-section-title {
+      color: #1f3c88;
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 15px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .form-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 15px;
+    }
+
+    .form-group {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #555;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 14px;
+      transition: border-color 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #1f3c88;
+      box-shadow: 0 0 0 2px rgba(31, 60, 136, 0.1);
+    }
+
+    .error {
+      color: #f44336;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+
+    /* ================= ACTION BUTTONS ================= */
+    .action-buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 25px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 500;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s;
+    }
+
+    .btn-primary {
+      background: #4CAF50;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #45a049;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: #6c757d;
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background: #5a6268;
+      transform: translateY(-2px);
+    }
+
+    /* ================= FOOTER ================= */
+    .footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 13px;
+      color: #777;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+
+<div class="main">
+    <div class="header">
+        <h1>{{ action }} Daily Sheet Entry</h1>
+        <div class="datetime" id="datetime"></div>
+    </div>
+
+    <!-- Form Container -->
+    <div class="form-container">
+        <div class="form-header">
+            <h2>Daily Sheet Information</h2>
+        </div>
+        
+        <div class="form-body">
+            <form method="POST" id="dailySheetForm">
+                {% csrf_token %}
+                
+                <!-- Basic Information Section -->
+                <div class="form-section">
+                    <div class="form-section-title">Basic Information</div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="id_date">Date *</label>
+                            {{ form.date }}
+                            {% if form.date.errors %}
+                                <div class="error">{{ form.date.errors }}</div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="id_name">Name *</label>
+                            {{ form.name }}
+                            {% if form.name.errors %}
+                                <div class="error">{{ form.name.errors }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="id_case_number">Case Number *</label>
+                            {{ form.case_number }}
+                            {% if form.case_number.errors %}
+                                <div class="error">{{ form.case_number.errors }}</div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="id_diagnosis">Diagnosis *</label>
+                            {{ form.diagnosis }}
+                            {% if form.diagnosis.errors %}
+                                <div class="error">{{ form.diagnosis.errors }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Payment Information Section -->
+                <div class="form-section">
+                    <div class="form-section-title">Payment Information</div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="id_charge">Charge (₹) *</label>
+                            {{ form.charge }}
+                            {% if form.charge.errors %}
+                                <div class="error">{{ form.charge.errors }}</div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="id_received">Received (₹) *</label>
+                            {{ form.received }}
+                            {% if form.received.errors %}
+                                <div class="error">{{ form.received.errors }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="id_payment_status">Payment Status *</label>
+                            {{ form.payment_status }}
+                            {% if form.payment_status.errors %}
+                                <div class="error">{{ form.payment_status.errors }}</div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="id_payment_type">Payment Type *</label>
+                            {{ form.payment_type }}
+                            {% if form.payment_type.errors %}
+                                <div class="error">{{ form.payment_type.errors }}</div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="id_payment_frequency">Payment Frequency *</label>
+                            {{ form.payment_frequency }}
+                            {% if form.payment_frequency.errors %}
+                                <div class="error">{{ form.payment_frequency.errors }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Time Information Section -->
+                <div class="form-section">
+                    <div class="form-section-title">Time Information</div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="id_in_time">In Time</label>
+                            {{ form.in_time }}
+                            {% if form.in_time.errors %}
+                                <div class="error">{{ form.in_time.errors }}</div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="id_out_time">Out Time</label>
+                            {{ form.out_time }}
+                            {% if form.out_time.errors %}
+                                <div class="error">{{ form.out_time.errors }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Treatment Details Section -->
+                <div class="form-section">
+                    <div class="form-section-title">Treatment Details</div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="id_treatment_1">Treatment 1</label>
+                            {{ form.treatment_1 }}
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="id_treatment_2">Treatment 2</label>
+                            {{ form.treatment_2 }}
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="id_treatment_3">Treatment 3</label>
+                            {{ form.treatment_3 }}
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="id_treatment_4">Treatment 4</label>
+                            {{ form.treatment_4 }}
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Therapist Details Section -->
+                <div class="form-section">
+                    <div class="form-section-title">Therapist Details</div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="id_therapist_1">Therapist 1 *</label>
+                            {{ form.therapist_1 }}
+                            {% if form.therapist_1.errors %}
+                                <div class="error">{{ form.therapist_1.errors }}</div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="id_therapist_2">Therapist 2 (Optional)</label>
+                            {{ form.therapist_2 }}
+                            {% if form.therapist_2.errors %}
+                                <div class="error">{{ form.therapist_2.errors }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Save Entry
+                    </button>
+                    <a href="{% url 'daily_sheet_list' %}" class="btn btn-secondary">
+                        <i class="fas fa-times"></i> Cancel
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="footer">
+        © 2025 Unique Physio Care. All Rights Reserved.
+    </div>
+</div>
+
+<script>
+    function updateDateTime() {
+        const now = new Date();
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        const date = now.toLocaleDateString(undefined, options);
+        const time = now.toLocaleTimeString();
+        document.getElementById('datetime').innerHTML = date + ' | ' + time;
+    }
+
+    setInterval(updateDateTime, 1000);
+    updateDateTime();
+
+    // Auto-fill In Time when Name is entered
+    document.getElementById('id_name').addEventListener('blur', function() {
+        const inTimeField = document.getElementById('id_in_time');
+        if (this.value && !inTimeField.value) {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            inTimeField.value = `${hours}:${minutes}`;
+        }
+    });
+
+    // Auto-fill Out Time when Payment Status is selected
+    document.getElementById('id_payment_status').addEventListener('change', function() {
+        const outTimeField = document.getElementById('id_out_time');
+        if (this.value && !outTimeField.value) {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            outTimeField.value = `${hours}:${minutes}`;
+        }
+    });
+</script>
+
+{% endblock %}

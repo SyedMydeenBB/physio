@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+
+{% block title %}Unique Physio Care | Dashboard{% endblock %}
+
+{% block extra_css %}
+<style>
+  /* ================= HEADER ================= */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    padding: 15px 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    margin: 25px;
+  }
+
+  .header h1 {
+    font-size: 22px;
+    color: #1f3c88;
+  }
+
+  .datetime {
+    font-size: 14px;
+    color: #555;
+  }
+
+  /* ================= DASHBOARD CARDS ================= */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin: 0 25px;
+  }
+
+  .card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+  }
+
+  .card h3 {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 10px;
+  }
+
+  .card p {
+    font-size: 28px;
+    font-weight: bold;
+    color: #1f3c88;
+  }
+
+  /* ================= FOOTER ================= */
+  .footer {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 13px;
+    color: #777;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="header">
+  <h1>Dashboard Overview</h1>
+  <div class="datetime" id="datetime"></div>
+</div>
+
+<div class="cards">
+  <div class="card">
+    <h3>Total Patients</h3>
+    <p>124</p>
+  </div>
+  <div class="card">
+    <h3>Today Appointments</h3>
+    <p>18</p>
+  </div>
+  <div class="card">
+    <h3>Active Therapists</h3>
+    <p>6</p>
+  </div>
+  <div class="card">
+    <h3>Pending Reports</h3>
+    <p>9</p>
+  </div>
+</div>
+
+<div class="footer">
+  © 2025 Unique Physio Care. All Rights Reserved.
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  function updateDateTime() {
+    const now = new Date();
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const date = now.toLocaleDateString(undefined, options);
+    const time = now.toLocaleTimeString();
+    document.getElementById('datetime').innerHTML = date + ' | ' + time;
+  }
+
+  setInterval(updateDateTime, 1000);
+  updateDateTime();
+</script>
+{% endblock %}
